@@ -1,34 +1,111 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Sign In</title>
-</head>
-<body>
-    <div class = "box">
-        <div class = "contents">
-            <form method = "POST">
-                {{form.hidden_tag()}}
-                {{form.firstname.label}} {{form.firstname()}}
-                <br>
-                {{form.lastname.label}} {{form.lastname()}}
-                <br>
-                {{form.username.label}} {{form.username()}}
-                <br>
-                {{form.password.label}} {{form.password()}}
-                <br>
-                {{form.grade.label}} 
-                {{form.grade}}
-                <br>
-                {{form.submit}}
-                <br>
-            </form>
-        </div>
+{% extends "navbar.html" %}
+{% block title %}Create an Account{% endblock %}
+
+{% block content %}
+<div class = "box">
+    <p> Sign Up </p>
+    <div class = "contents">
+        <form method = "POST">
+            {{form.hidden_tag()}}
+            {{form.firstname.label}} 
+            <br>
+            <div class = "textboxes">
+                {{form.firstname()}}
+            </div>
+            <br> 
+            {{form.lastname.label}} 
+            <br>
+            <div class = "textboxes">
+                {{form.lastname()}}
+            </div>
+            <br> 
+            {{form.username.label}}
+            <br>
+            <div class = "textboxes">
+                {{form.username()}}
+            </div>
+            <br> 
+            {{form.password.label}} 
+            <br>
+            <div class = "textboxes">
+                {{form.password()}}
+            </div>
+            <br> 
+            {{form.grade.label}} 
+            <br>
+            {% for subfield in form.grade %}
+                    {{ subfield }} {{ subfield.label }}
+                    <br>
+            {% endfor %}
+            <br>
+            <br>
+            {{ form.submit(class="submit-btn") }}
+            <br>
+        </form>
     </div>
-</body>
-</html>
+</div>
 <style>
-    .contents{
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+    p{
+        font-family: poppins;
+        font-weight: bold;
+        font-size: 30px;
         text-align: center;
     }
+    body {
+        background-image: url("https://www.coopercarry.com/wp-content/uploads/2018/06/high-school-design-architecture-innovation-3-1536x768.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        display: flex;
+        justify-content: center; 
+        align-items: center; 
+        height: 100vh; 
+        margin: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        background-blend-mode: overlay;
+    }
+
+    .box {
+        border: 1px solid #ccc; 
+        border-radius: 30px;
+        flex-direction: column;
+        background: white;
+        padding: 20px;
+        width: 80%; 
+        max-width: 400px; 
+        height: 700px
+    }
+    .textboxes input{
+        border-radius: 8px;
+        border-color: #D0D2D4;
+        width: 100%; 
+        padding: 5px; 
+        box-sizing: border-box;
+        font-size: 16px;
+        border-width: 2px;
+    }
+    .textboxes input:focus {
+            border: solid;
+            border-color: #3884D5; 
+            outline: none; 
+            border-width: thin;
+    }
+    .contents {
+        
+        font-family: poppins;
+    }
+    .submit-btn {
+            border: none;
+            border-radius: 15px;
+            background-color: #3884D5;
+            padding: 15px 40px; /* Increase padding for larger size */
+            width: 100%; /* Make the button width 100% of its container */
+            text-align: center;
+            font-size: 18px; /* Increase font size */
+            font-weight: bold;
+            color: white;
+            text-transform: uppercase;
+        }
 </style>
+{% endblock %}
