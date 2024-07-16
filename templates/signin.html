@@ -5,11 +5,30 @@
     <title>Sign In</title>
 </head>
 <body>
-    <h1>Sign In</h1>
-    <p>First Name: {{ form.firstname.data }}</p>
-    <p>Last Name: {{ form.lastname.data }}</p>
-    <p>Username: {{ form.username.data }}</p>
-    <p>Password: {{ form.password.data }}</p>
-    <p>Grade: {{ form.grade.data }}</p>
+    <div class = "box">
+        <div class = "contents">
+            <form method = "POST">
+                {{form.hidden_tag()}}
+                {{form.firstname.label}} {{form.firstname()}}
+                <br>
+                {{form.lastname.label}} {{form.lastname()}}
+                <br>
+                {{form.username.label}} {{form.username()}}
+                <br>
+                {{form.password.label}} {{form.password()}}
+                <br>
+                {{form.grade.label}} 
+                {{form.grade}}
+                <br>
+                {{form.submit}}
+                <br>
+            </form>
+        </div>
+    </div>
 </body>
 </html>
+<style>
+    .contents{
+        text-align: center;
+    }
+</style>
